@@ -1066,6 +1066,8 @@ class ProcessMonitor(object):
     def __init__(self):
         # pid -> callback()
         self.callback_by_pid = {}
+        # pid -> status
+        self.pending_by_pid = {}
         signal.signal(signal.SIGCHLD, self._on_sigchld)
 
     def _on_sigchld(self, _signum, _frame):
